@@ -1,15 +1,37 @@
-import React from 'react';
-
 
 import './App.css';
-import Home from './pages/Home';
+import Chatpage from './pages/Chatpage';
 
- function App() {
+import Homepage from './pages/Homepage';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+
+  {
+    path: "/",
+    element:<Homepage></Homepage>,
+  },
+  {
+    path: "/chats",
+    element:<Chatpage></Chatpage>,
+  },
+
+])
+
+
+function App() {
   return (
-    <div>
-   <Home></Home>
-      
+    <RouterProvider router={router}>
+    <div className='App'>
+   
     </div>
-  )
-  }
-  export default App
+    </RouterProvider>
+  );
+}
+
+export default App;
