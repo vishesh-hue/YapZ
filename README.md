@@ -27,12 +27,12 @@ Database Models:
             username: {},
             password: {},
         }
-        (sample user : 
+                sample user : 
                     {
                         "username" : "05-yuvraj-singh",
                         "password" : "12312345"
                     }
-            )
+            
 
     CHAT MODEL:
 
