@@ -1,8 +1,7 @@
 const {app} = require('./app')
-const port = 5000;
-const MONGODB_URI = "mongodb+srv://yuvrajSingh05:moneY341@testcluster.hqa0fzg.mongodb.net/test";
-const {connectToDB} = require('./models/db');
-connectToDB(MONGODB_URI);
+const port = process.env.PORT;
+const {connectToDB} = require('./config/db');
+connectToDB();
 
 
 app.listen(port, ()=>{
