@@ -1,26 +1,48 @@
-import React from 'react'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Chatpage = () => {
-  const [ chats  , setChats] = useState([])
-  const fetchChats = async()=>{
-    const {data} = await axios.get("/api/chat")
-    setChats(data)
-  }
+  const [chatsData, setChatsData] = useState([]);
 
-  useEffect(()=>{
-    fetchChats()
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:5000/api/chat");
+        setChatsData(data.chats); // Access the 'chats' property and set it in the state
+      } catch (error) {
+        console.error('Error fetching chat data:', error);
+      }
+    };
 
-  },[])
+    fetchChats();
+  }, []); // Empty dependency array to run the effect only once
+
   return (
-    <div>
-      {chats.map((chat)=>{<div key = {chat.id}>
-        {chat.chatName}
-        </div>
-      })}
-    </div>
-  )
-}
+    <>
+      <div>
+        <h1>Chat List</h1>
+        <ul>
+          {chatsData.map((chat) => (
+            <li key={chat._id}>
+              <h2>{chat.chatName}</h2>
+              <p>Group Chat: {chat.isGroupChat ? 'Yes' : 'No'}</p>
+              {chat.isGroupChat && (
+                <p>Group Admin: {chat.groupAdmin.name}</p>
+              )}
+              <ul>
+                {chat.users.map((user) => (
+                  <li key={user.email}>
+                    <strong>Name:</strong> {user.name}, <strong>Email:</strong>{' '}
+                    {user.email}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
 
-export default Chatpage
+export default Chatpage;

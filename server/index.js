@@ -5,7 +5,6 @@ const {connectToDB} = require('./models/db');
 connectToDB(MONGODB_URI);
 
 
-
 app.listen(port, ()=>{
     console.log(`SERVER RUNNING FINE AT ${port}`);
 })

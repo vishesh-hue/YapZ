@@ -5,9 +5,7 @@ import Chatpage from './pages/Chatpage';
 import Homepage from './pages/Homepage';
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
+  RouterProvider
 } from "react-router-dom";
 
 const router = createBrowserRouter([
