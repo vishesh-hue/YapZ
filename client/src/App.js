@@ -7,12 +7,13 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import UserAuthenticationpage from './pages/User-Authenticationpage';
 
 const router = createBrowserRouter([
 
   {
     path: "/",
-    element:<Homepage></Homepage>,
+    element:<UserAuthenticationpage></UserAuthenticationpage>,
   },
   {
     path: "/chats",

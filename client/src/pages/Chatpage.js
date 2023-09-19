@@ -7,7 +7,7 @@ const Chatpage = () => {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/chat");
+        const { data } = await axios.get("http://localhost:5000/api/chats/chat");
         setChatsData(data.chats); // Access the 'chats' property and set it in the state
       } catch (error) {
         console.error('Error fetching chat data:', error);
