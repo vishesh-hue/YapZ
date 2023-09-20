@@ -22,9 +22,8 @@ Database Models:
     USER MODEL :
     
         {
-            name: {},
-            email: {},
             username: {},
+            email: {},
             password: {},
         }
                 sample user : 
