@@ -8,15 +8,13 @@ function SignIn() {
         setUserData({...userData , [e.target.name] : e.target.value} )
     }
     const checkLogin = async () => {
-        try {
-          const response = await axios.get('http://localhost:5000/api/users/signin', {
-            username: userData.username,
-            password: userData.password
-          });
+        console.log(userData)  
+      try {
+          const response = await axios.post('http://localhost:5000/api/users/signin', userData );
           console.log( response );
     
         } catch (error) {
-          console.error( error);
+          console.log( "error is: " + error);
         }
       }
   return (

@@ -1,4 +1,6 @@
 const jwt=require('jsonwebtoken')
+const jwtSecret = process.env.JWT_SECRET_KEY || 'miakhalifa' 
+const jwtExpiration = '6h'; 
 
 const User = require("../models/userModel");
 
@@ -13,19 +15,18 @@ const addUser = async (req, res) => {
 };
 
 
-const jwtSecret = process.env.JWT_SECRET_KEY
-const jwtExpiration = '6h'; 
 
 const Login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+      const { username, password } = req.body;
+      console.log(username,password)
     const user = await User.findOne({
       username: username,
       password: password,
     });
 
     if (user) {
-      const token = jwt.sign({ userId: user._id }, jwtSecret, {
+      const token = jwt.sign({ username: username }, jwtSecret, {
         expiresIn: jwtExpiration,
       });
 
